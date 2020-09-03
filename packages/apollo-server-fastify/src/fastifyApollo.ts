@@ -25,9 +25,9 @@ export async function graphqlFastify(
       const { graphqlResponse, responseInit } = await runHttpQuery(
         [request, reply],
         {
-          method: request.req.method as string,
+          method: request.raw.method as string,
           options,
-          query: request.req.method === 'POST' ? request.body : request.query,
+          query: request.raw.method === 'POST' ? request.body : request.query,
           request: convertNodeHttpToRequest(request.raw),
         },
       );
